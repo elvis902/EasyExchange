@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class ActivityLogin extends AppCompatActivity {
 
     //All required variables
-    EditText  mName, mEmail, mPassword;
+    EditText  mEmail, mPassword;
     Button mRegister;
     ProgressBar bar;
     FirebaseAuth mAuth;
