@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "249653394823",
+    "project_id": "easyexchangetest",
+    "storage_bucket": "easyexchangetest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:249653394823:android:3e7a5fa2cfeddeff17a722",
+        "android_client_info": {
+          "package_name": "com.example.easyexchangetest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "249653394823-bgg2ludbcb131g6r2ck21853ks9nejmj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7_GJpufX29EFuJscRJYXXIINe-nLPvlU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "249653394823-bgg2ludbcb131g6r2ck21853ks9nejmj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
