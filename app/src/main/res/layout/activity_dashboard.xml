@@ -28,11 +28,13 @@
         android:layout_marginEnd="172dp"
         android:layout_marginBottom="65dp"
         android:text="Dummy Id"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/logout_btn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.581"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/email_tv"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/logout_btn"
@@ -40,11 +42,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="168dp"
         android:layout_marginEnd="145dp"
-        android:layout_marginBottom="380dp"
-        android:text="LOG OUT"
+        android:layout_marginBottom="80dp"
         android:onClick="onLogout"
+        android:text="LOG OUT"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -59,4 +62,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/newadd_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="115dp"
+        android:layout_marginBottom="288dp"
+        android:text="NewAdd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uid_tv"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/myadds_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="86dp"
+        android:layout_marginTop="115dp"
+        android:layout_marginEnd="64dp"
+        android:text="MyAdds"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/newadd_btn"
+        app:layout_constraintTop_toBottomOf="@+id/uid_tv" />
 </androidx.constraintlayout.widget.ConstraintLayout>
