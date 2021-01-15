@@ -19,8 +19,11 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -45,6 +48,7 @@ public class ActivityAdd extends AppCompatActivity {
     Bitmap bitmap;
     String email;
     FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,13 +152,16 @@ public class ActivityAdd extends AppCompatActivity {
 
                                 AddDataHolder obj = new AddDataHolder(productName.getText().toString(), productDescription.getText().toString(),email,
                                         uri.toString());
-                                root.child("1").setValue(obj);
+
+                                root.push().setValue(obj);
+                               // root.child("1").setValue(obj);
 
                                 productName.setText("");
                                 productDescription.setText("");
                                 img.setImageResource(R.drawable.ic_launcher_background);
                                 Toast.makeText(getApplicationContext(),"File Uploaded Successfully",Toast.LENGTH_LONG).show();
-                               // startActivity(new Intent(ActivityAdd.this, ActivityDashboard.class));
+                                // **It is not possible to create intent and add items to database in the same time. Have to see on it.
+                               //startActivity(new Intent(ActivityAdd.this, ActivityDashboard.class));
                             }
                         });
                     }
