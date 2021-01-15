@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class ActivityDashboard extends AppCompatActivity {
 
     TextView mEmail, mId;
-
+    Button myAddBtn, newAddBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +23,25 @@ public class ActivityDashboard extends AppCompatActivity {
 
         mEmail = (TextView)findViewById(R.id.email_tv);
         mId = (TextView)findViewById(R.id.uid_tv);
+        myAddBtn = (Button)findViewById(R.id.myadds_btn);
+        newAddBtn = (Button)findViewById(R.id.newadd_btn);
 
-        mEmail.setText(getIntent().getStringExtra("email").toString());
-        mId.setText("UId: "+getIntent().getStringExtra("uid").toString());
+
+        String email = getIntent().getStringExtra("email").toString();
+        String id = getIntent().getStringExtra("uid").toString();
+
+        mEmail.setText(email);
+        mId.setText("UId: " +id);
+
+        //Onclick Listener for New Add
+        newAddBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityDashboard.this, ActivityAdd.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
