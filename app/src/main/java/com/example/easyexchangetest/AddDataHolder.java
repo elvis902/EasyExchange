@@ -1,5 +1,8 @@
 package com.example.easyexchangetest;
 
+/*  This class is used to hold all the info of an add which is to be uploaded to Storage and the details uploaded to
+* database .*/
+
 public class AddDataHolder {
     String pName, pDescription, email, pUrl;
 

@@ -38,12 +38,16 @@ import com.karumi.dexter.listener.single.PermissionListener;
 import java.io.InputStream;
 import java.util.Random;
 
+//@Comment: This activity is used to add new Adds by the user
+
 public class ActivityAdd extends AppCompatActivity {
 
     //All required variables
     EditText productName, productDescription;
     Button browseBtn, addBtn;
     ImageView img;
+
+    //@Comment: Uri for the image from device
     Uri filepath;
     Bitmap bitmap;
     String email;
@@ -63,10 +67,13 @@ public class ActivityAdd extends AppCompatActivity {
         email = mAuth.getCurrentUser().getEmail();
 
 
-                    //Set the browse button which allows user to select image from external storage
+                    /*@Comment: Set the browse button which allows user to select image from external storage
+                   Dexter Dependency is used to manage permission for accessing device storage image easily.*/
                     browseBtn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+
+                            //@Comment: Dexer is helping with permission to select an image from External Storage
                             Dexter.withActivity(ActivityAdd.this)
                                     .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                                     .withListener(new PermissionListener() {
@@ -92,18 +99,19 @@ public class ActivityAdd extends AppCompatActivity {
                     });
 
 
-                    //Set the signup button which allows user to upload the Selected image to Firebase Storage
+                    //@Comment: Set the add button which allows user to upload the Selected image to Firebase Storage
                     addBtn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            //@Comment: Custom function to upload the image to firebase storage
                             uploadtofirebase();
                         }
                     });
 
     }
 
-    //Catching the intent produced by browse btn to select image from device using Dexter
-    //Data is received as Uri, which is changed to bitstream -> bitmap -> imageview and img is set
+    /*@Comment: Catching the intent produced by browse btn to select image from device using Dexter
+    Data is received as Uri, which is changed to bitstream -> bitmap -> imageview and img is set in the UI*/
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(requestCode == 1 && resultCode == RESULT_OK)
@@ -124,9 +132,11 @@ public class ActivityAdd extends AppCompatActivity {
 
 
 
-    //Code to upload Image to Firebase
-    //The Uri required was already found using Dexter above
+    /*@Comment: Code to upload Image to Firebase using Uri
+    //The Uri required was already found using Dexter above*/
     private void uploadtofirebase() {
+
+        //@Comment: Dialog box used to show the Progress of upload to Users
         ProgressDialog dialog = new ProgressDialog(this);
         dialog.setTitle("File Uploader");
         dialog.show();
@@ -142,8 +152,9 @@ public class ActivityAdd extends AppCompatActivity {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         dialog.dismiss();
-                        //Code to get the url of image uploaded to Firen=base Dtorage
-                        //Lage hath all data using Dataholder obj along with url is send to Firebase Database
+
+                        /*Code to get the url of image uploaded to Firenbase Storage.
+                        Dataholder obj(which contains the other info of adds) along with url is send to Firebase Database, under the child "Adds"*/
                         uploader.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
@@ -152,14 +163,15 @@ public class ActivityAdd extends AppCompatActivity {
 
                                 AddDataHolder obj = new AddDataHolder(productName.getText().toString(), productDescription.getText().toString(),email,
                                         uri.toString());
-
+                                //@Comment: Dataholder obj(which contains the other info of adds) along with url is send to Firebase Database, under the child "Adds"
                                 root.push().setValue(obj);
-                               // root.child("1").setValue(obj);
 
+                                //@Comment: All the field are reset
                                 productName.setText("");
                                 productDescription.setText("");
                                 img.setImageResource(R.drawable.ic_launcher_background);
                                 Toast.makeText(getApplicationContext(),"File Uploaded Successfully",Toast.LENGTH_LONG).show();
+
                                 // **It is not possible to create intent and add items to database in the same time. Have to see on it.
                                //startActivity(new Intent(ActivityAdd.this, ActivityDashboard.class));
                             }
@@ -169,6 +181,8 @@ public class ActivityAdd extends AppCompatActivity {
                 .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+
+                        //@Comment: Things that we would like to show to user during the upload of image to fireabse storeage
                         long percentage = (100*snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
                         dialog.setMessage("Uploaded" + (int)percentage+" %");
                     }

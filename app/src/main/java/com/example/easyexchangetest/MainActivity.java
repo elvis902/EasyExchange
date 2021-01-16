@@ -9,6 +9,8 @@ import android.os.Bundle;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 
+//@Comment: Here in this app MainActivity is used as Home Activity, which shows all adds available to user
+
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recview;
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
                         .build();
 
         adapter = new MyAdapter(options);
+
+        //@Comment: RecyclerView is set with adapter
         recview.setAdapter(adapter);
     }
 

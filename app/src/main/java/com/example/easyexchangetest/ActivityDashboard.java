@@ -27,14 +27,15 @@ public class ActivityDashboard extends AppCompatActivity {
         newAddBtn = (Button)findViewById(R.id.newadd_btn);
         allAddsBtn = (Button)findViewById(R.id.allAdd_btn);
 
-
+        //@Comment: Uid and email of user is received from intent
         String email = getIntent().getStringExtra("email").toString();
         String id = getIntent().getStringExtra("uid").toString();
 
+        //@Comment: Email and id text view is set
         mEmail.setText(email);
         mId.setText("UId: " +id);
 
-        //Onclick Listener for New Add
+        //@Comment: Onclick Listener for New Addition of adds by user. So user is directed to a ActivityAdd for creating the add
         newAddBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,6 +44,7 @@ public class ActivityDashboard extends AppCompatActivity {
             }
         });
 
+        //@Comment: Onclick Listener for showing All Adds available. Here is User is directed to MainActivity(Which is like home) and where all adds are displayed
         allAddsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,6 +52,7 @@ public class ActivityDashboard extends AppCompatActivity {
             }
         });
 
+        //@Comment: onclickListener for showing all adds given by the user. Here User is directed to MyAllAdds activity.
         myAddBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +63,7 @@ public class ActivityDashboard extends AppCompatActivity {
 
     }
 
+    //@Comment: Button for logout of user
     public void onLogout(View view) {
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(ActivityDashboard.this, ActivityRegister.class));

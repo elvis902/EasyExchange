@@ -35,7 +35,7 @@ public class ActivityLogin extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
     }
 
-    //Firebase Authentication for login of existing user
+    //@Comment: Firebase Authentication for login of existing user
     public void onLogin(View view) {
         String email = mEmail.getText().toString();
         String password = mPassword.getText().toString();
@@ -47,7 +47,7 @@ public class ActivityLogin extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
 
-                                //On Successful login, User is directed to Dashboard page
+                                //@Comment: On Successful login, User is directed to Dashboard page with email and uid passed with intent
                                 bar.setVisibility(View.INVISIBLE);
                                 Intent intent = new Intent(ActivityLogin.this, ActivityDashboard.class);
                                 intent.putExtra("email",mAuth.getCurrentUser().getEmail());

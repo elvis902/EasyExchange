@@ -1,5 +1,7 @@
 package com.example.easyexchangetest;
 
+/* Modal class */
+
 public class HomeModal {
     String email, pDescription, pName, pUrl;
 

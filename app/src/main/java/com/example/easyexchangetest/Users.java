@@ -1,5 +1,8 @@
 package com.example.easyexchangetest;
 
+//@Comment: Modal class to create obj of info of user profile.
+//Used to send or retrive user info to/from database
+
 public class Users {
     String name, email;
     public Users(){

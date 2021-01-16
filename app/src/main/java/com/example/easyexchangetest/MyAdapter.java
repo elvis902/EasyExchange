@@ -13,6 +13,9 @@ import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
+/* Adapter class. FirebaseRecycler Adapter dependency is used to populate UI with Adds */
+//This adapter is used for both MyAllAdd Activity(which shows all adds of current user) and MainActivity(It is basically home and it shows all available adds)
+//It extends  FirebaseRecyclerAdapter
 public class MyAdapter extends FirebaseRecyclerAdapter<HomeModal, MyAdapter.MyViewHolder> {
 
 
@@ -37,6 +40,7 @@ public class MyAdapter extends FirebaseRecyclerAdapter<HomeModal, MyAdapter.MyVi
         return new MyViewHolder(view);
     }
 
+    //ViewHolder class is implemented here within
     static class MyViewHolder extends RecyclerView.ViewHolder{
 
         ImageView pimg;

@@ -43,12 +43,13 @@ public class ActivityRegister extends AppCompatActivity {
 
     }
 
-    //Directing to Login Activity
+    // @Comment:   Directing to Login Activity if already registered
     public void alreadyRegistered(View view) {
         startActivity(new Intent(ActivityRegister.this, ActivityLogin.class));
     }
 
-    //Firebase Authentication for new User done here Done here
+
+    // @Comment:  Firebase Authentication for new User done here
     public void onRegister(View view) {
         mAuth = FirebaseAuth.getInstance();
         bar.setVisibility(View.VISIBLE);
@@ -62,17 +63,26 @@ public class ActivityRegister extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
 
-                                    //On successful Register, Directing User to Login Activity
+                                    // @Comment:  On successful Register, Directing User to Login Activity
                                     bar.setVisibility(View.INVISIBLE);
                                     mEmail.setText("");
                                     mPassword.setText("");
                                     mName.setText("");
+
+
+                                    // @Comment: Name and email of the newly registered user is added to database
                                     addToDatabase(name, email);
+
+
+                                    // @Comment: Registered Successful, User is directed to Login Activity for Login
                                     Toast.makeText(getApplicationContext(), "Registered Successfully", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(ActivityRegister.this,ActivityLogin.class));
 
 
-                                } else {
+                                }
+                                else {
+
+                                    //@Comment: On unsuccessful Register, Notifying user about Process Error
                                     bar.setVisibility(View.INVISIBLE);
                                     mEmail.setText("");
                                     mPassword.setText("");
@@ -85,6 +95,7 @@ public class ActivityRegister extends AppCompatActivity {
                         });
     }
 
+    // @Comment:  Name and email of the newly registered user is added to database
     private void addToDatabase(String name, String email) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference().child("Users");
