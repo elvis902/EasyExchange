@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyExchangeTest">
-        <activity android:name=".ActivityAdd"></activity>
+        <activity android:name=".MyAllAdds"></activity>
+        <activity android:name=".ActivityAdd" />
         <activity android:name=".ActivityDashboard" />
         <activity android:name=".ActivityRegister">
             <intent-filter>
@@ -22,9 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ActivityLogin" />
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>

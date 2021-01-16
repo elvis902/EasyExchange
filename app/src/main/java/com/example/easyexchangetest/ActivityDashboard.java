@@ -50,6 +50,13 @@ public class ActivityDashboard extends AppCompatActivity {
             }
         });
 
+        myAddBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ActivityDashboard.this, MyAllAdds.class));
+            }
+        });
+
 
     }
 
